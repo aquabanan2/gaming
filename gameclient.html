@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming in Class Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Gaming in Class Time</h1>
+</header>
+
+<nav>
+    <a href="#" onclick="loadPage('home')">Home</a>
+    <a href="#" onclick="loadPage('ovo')">Ovo</a>
+    <a href="#" onclick="loadPage('timeShooter')">Time Shooter</a>
+    <a href="#" onclick="loadPage('retroBowl')">Retro Bowl</a>
+</nav>
+
+<section id="content">
+    <!-- Content will be loaded here -->
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function loadPage(page) {
+        var contentSection = document.getElementById('content');
+        switch (page) {
+            case 'home':
+                contentSection.innerHTML = '<h2>Home</h2><p>Successful Load</p>';
+                break;
+            case 'ovo':
+                contentSection.innerHTML = '<iframe src="https://arjun99ab.github.io/ovo/1.4.4/" width="100%" height="500px"></iframe>';
+                break;
+            case 'timeShooter':
+                contentSection.innerHTML = '<iframe src="https://mdtowerz.github.io/time-shooter-3/" width="100%" height="500px"></iframe>';
+                break;
+            case 'retroBowl':
+                contentSection.innerHTML = '<iframe id="game" src="https://ttfq.github.io/retrobowl/" width="100%" height="500px"></iframe>';
+                break;
+            default:
+                contentSection.innerHTML = '<h2>Page Not Found</h2>';
+                break;
+        }
+    }
+
+    // Load the home page by default
+    loadPage('home');
+</script>
+
+</body>
+</html>
