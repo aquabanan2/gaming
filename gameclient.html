@@ -29,6 +29,12 @@
         section {
             padding: 20px;
         }
+        .panic-button {
+            padding: 10px;
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +48,20 @@
     <a href="#" onclick="loadPage('ovo')">Ovo</a>
     <a href="#" onclick="loadPage('timeShooter')">Time Shooter</a>
     <a href="#" onclick="loadPage('retroBowl')">Retro Bowl</a>
+    <a href="#" onclick="loadPage('littleAlchemy')">Little Alchemy 2</a>
+    <a href="#" onclick="loadPage('1v1lol')">1v1.lol</a>
+    <a href="#" onclick="loadPage('ovo2')">Ovo 2</a>
+    <a href="#" onclick="openCookieClicker()">Cookie Clicker</a>
+    <a href="#" onclick="loadPage('angryBirds')">Angry Birds</a>
+    <a href="#" onclick="loadPage('suggestions')">Suggestions</a>
+    <a href="#" onclick="loadPage('update')">Update</a>
 </nav>
 
 <section id="content">
     <!-- Content will be loaded here -->
 </section>
+
+<div class="panic-button" onclick="panicButtonClick()">Panic Button</div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -65,14 +80,71 @@
             case 'retroBowl':
                 contentSection.innerHTML = '<iframe id="game" src="https://ttfq.github.io/retrobowl/" width="100%" height="500px"></iframe>';
                 break;
+            case 'littleAlchemy':
+                contentSection.innerHTML = '<iframe src="https://littlealchemy2.com/" width="100%" height="800px"></iframe>';
+                break;
+            case '1v1lol':
+                contentSection.innerHTML = '<button onclick="open1v1Lol()">Open 1v1.lol</button>';
+                break;
+            case 'ovo2':
+                contentSection.innerHTML = '<iframe src="https://hotfalcon.github.io/2.0.2alpha/index.html" width="100%" height="800px"></iframe>';
+                break;
+            case 'angryBirds':
+                contentSection.innerHTML = '<iframe src="https://gg-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/gertdoro/UnityExplorer@30e7601c53b57634d2288fd993d8baaeae060eb2/CSConsole/Lexers/ab.xml" width="100%" height="800px"></iframe>';
+                break;
+            case 'suggestions':
+                contentSection.innerHTML = '<h2>Contact Information</h2>' +
+                    '<p>Phone: 425-753-8482</p>' +
+                    '<p>Email: shawyonp@hotmail.com</p>';
+                break;
+            case 'update':
+                window.open('https://github.com/aquabanan2/gaming/blob/main/gameclient.html', '_blank');
+                break;
             default:
                 contentSection.innerHTML = '<h2>Page Not Found</h2>';
                 break;
         }
     }
 
-    // Load the home page by default
-    loadPage('home');
+    function panicButtonClick() {
+        var confirmation = confirm("Are you sure you want to close this tab?");
+        if (confirmation) {
+            window.close();
+        }
+    }
+
+    function open1v1Lol() {
+        // Include the 1v1.lol code here if needed
+    }
+
+    function openCookieClicker() {
+        window.open("https://chrisgamez10.github.io/cookie-clicker-source-code/", "_blank");
+    }
+
+    function sendSuggestion() {
+        var suggestionText = document.getElementById('suggestionText').value;
+        
+        // Create a JSON payload with the suggestion
+        var payload = {
+            content: 'New Suggestion: ' + suggestionText
+        };
+
+        // Use jQuery to make a POST request to your Discord webhook
+        $.ajax({
+            url: 'https://discord.com/api/webhooks/1190817985154265249/gYyGQjrcg6CUOEGLi_WWRWx97f_qRS0WTeoYe5KuWFSiogY8HlzmihVhlw-XZ-962fl',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(response) {
+                // Handle success (optional)
+                alert('Suggestion submitted successfully!');
+            },
+            error: function(error) {
+                // Handle error (optional)
+                alert('Error submitting suggestion: ' + JSON.stringify(error));
+            }
+        });
+    }
 </script>
 
 </body>
